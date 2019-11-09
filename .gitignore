@@ -38,3 +38,4 @@ mesa-*/
 *.cmake
 CMakeCache.txt
 some-game
+.vscode/

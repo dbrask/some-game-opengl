@@ -6,23 +6,96 @@
 
 #include <GL/glut.h>
 
+#define 	GLFW_KEY_SPACE   32
+#define 	GLFW_KEY_A   65
+#define 	GLFW_KEY_B   66
+#define 	GLFW_KEY_C   67
+#define 	GLFW_KEY_D   68
+#define 	GLFW_KEY_E   69
+#define 	GLFW_KEY_F   70
+#define 	GLFW_KEY_G   71
+#define 	GLFW_KEY_H   72
+#define 	GLFW_KEY_I   73
+#define 	GLFW_KEY_J   74
+#define 	GLFW_KEY_K   75
+#define 	GLFW_KEY_L   76
+#define 	GLFW_KEY_M   77
+#define 	GLFW_KEY_N   78
+#define 	GLFW_KEY_O   79
+#define 	GLFW_KEY_P   80
+#define 	GLFW_KEY_Q   81
+#define 	GLFW_KEY_R   82
+#define 	GLFW_KEY_S   83
+#define 	GLFW_KEY_T   84
+#define 	GLFW_KEY_U   85
+#define 	GLFW_KEY_V   86
+#define 	GLFW_KEY_W   87
+#define 	GLFW_KEY_X   88
+#define 	GLFW_KEY_Y   89
+#define 	GLFW_KEY_Z   90
+
+// Global Variables
+double rotate_y=0; 
+double rotate_x=0;
+
 void display(void)
 {
     //Clear all pixels
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-    //draw white polygon (rectangle) with corners at
-    // (0.25, 0.25, 0.0) and (0.75, 0.75, 0.0)
-    glColor3f(1.0,1.0,1.0);
+    // Reset transformations
+    glLoadIdentity();
+
+    // Rotate when user changes rotate_x and rotate_y
+    glRotatef( rotate_x, 1.0, 0.0, 0.0 );
+    glRotatef( rotate_y, 0.0, 1.0, 0.0 );
+    //White side - BACK
     glBegin(GL_POLYGON);
-        glVertex3f(0.25, 0.25, 0.0);
-        glVertex3f(0.75, 0.25, 0.0);
-        glVertex3f(0.75, 0.75, 0.0);
-        glVertex3f(0.25, 0.75, 0.0);
+    glColor3f(   1.0,  1.0, 1.0 );
+    glVertex3f(  0.5, -0.5, 0.5 );
+    glVertex3f(  0.5,  0.5, 0.5 );
+    glVertex3f( -0.5,  0.5, 0.5 );
+    glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+
+    // Purple side - RIGHT
+    glBegin(GL_POLYGON);
+    glColor3f(  1.0,  0.0,  1.0 );
+    glVertex3f( 0.5, -0.5, -0.5 );
+    glVertex3f( 0.5,  0.5, -0.5 );
+    glVertex3f( 0.5,  0.5,  0.5 );
+    glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+
+    // Green side - LEFT
+    glBegin(GL_POLYGON);
+    glColor3f(   0.0,  1.0,  0.0 );
+    glVertex3f( -0.5, -0.5,  0.5 );
+    glVertex3f( -0.5,  0.5,  0.5 );
+    glVertex3f( -0.5,  0.5, -0.5 );
+    glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+
+    // Blue side - TOP
+    glBegin(GL_POLYGON);
+    glColor3f(   0.0,  0.0,  1.0 );
+    glVertex3f(  0.5,  0.5,  0.5 );
+    glVertex3f(  0.5,  0.5, -0.5 );
+    glVertex3f( -0.5,  0.5, -0.5 );
+    glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+
+    // Red side - BOTTOM
+    glBegin(GL_POLYGON);
+    glColor3f(   1.0,  0.0,  0.0 );
+    glVertex3f(  0.5, -0.5, -0.5 );
+    glVertex3f(  0.5, -0.5,  0.5 );
+    glVertex3f( -0.5, -0.5,  0.5 );
+    glVertex3f( -0.5, -0.5, -0.5 );
     glEnd();
     
-    // Don't wait start processing buffered OpenGL routines
     glFlush();
+    glutSwapBuffers();
 }
 
 void init(void)
@@ -36,51 +109,66 @@ void init(void)
     glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 }
 
-void callback(unsigned char key, int x, int y) {
-
+void keyboard(unsigned char key, int x, int y) {
     int mod = glutGetModifiers();
-    std::cout << "Key: " << key << " Mod: " << mod << "\n";
-    
+    std::cout << "NormKey: " << key << " Mod: " << mod;
+    std::cout << " X/Y: " << x << " " << y << "\n";
+    if (key == GLFW_KEY_D + GLFW_KEY_SPACE)  //  d - increase rotation by 5 degree
+    rotate_y += 5;
+    else if (key == GLFW_KEY_A + GLFW_KEY_SPACE) //  a - decrease rotation by 5 degree
+    rotate_y -= 5;
+    else if (key == GLFW_KEY_W + GLFW_KEY_SPACE) // w 
+    rotate_x += 5;
+    else if (key == GLFW_KEY_S + GLFW_KEY_SPACE) // s
+    rotate_x -= 5;
+  
+//  Request display update
+glutPostRedisplay();
+}
+
+void specialKeys(int key, int x, int y) {
+    int mod = glutGetModifiers();
+    std::cout << "SpecKey: " << key << " Mod: " << mod;
+    std::cout << " X/Y: " << x << " " << y << "\n";
+
+    if (key == GLUT_KEY_RIGHT)
+    rotate_y += 5;
+    else if (key == GLUT_KEY_LEFT)
+    rotate_y -= 5;
+    else if (key == GLUT_KEY_UP)
+    rotate_x += 5;
+    else if (key == GLUT_KEY_DOWN)
+    rotate_x -= 5;
+    glutPostRedisplay();
+
+}
+
+void mouse(int button, int state, int x, int y) {
+    int mod = glutGetModifiers();
+    std::cout << "Mouse-X/Y: " << x << " " << y << " ";
+    std::cout << "Button: " << button << " ";
+    std::cout << "Mod: " << mod << "" << "\n";
 }
 
 int main(int argc, char** argv) {
-    //std::cout << "hej1 \n";
-    //Game _game;
-    //printf("hej2 \n");
-    //printf("argc %s", &argc);
-    //printf("argv %s \n", argv[1]);
 
-    //using namespace boost::lambda;
-    //typedef std::istream_iterator<int> in;
-    //std::for_each(
-    //    in(std::cin), in(), std::cout << (_1 * 3) << " " );
-
-    //Initialise GLUT with command-line parameters. 
+    int base_window_size = 120;
     glutInit(&argc, argv);
-   
-    //Set Display Mode
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-
-    //Set the window position
-    glutInitWindowPosition(GLUT_INIT_WINDOW_X, GLUT_INIT_WINDOW_Y);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowPosition(-1, -1);
     
-    //Set the window size
-    glutInitWindowSize(GLUT_INIT_WINDOW_X,GLUT_INIT_WINDOW_Y);
+    glutInitWindowSize(16*base_window_size,9*base_window_size);    
+    glutCreateWindow("Some Game"); //Create the window
+    glEnable(GL_DEPTH_TEST); //  Enable Z-buffer depth test
     
+    init(); //Call init (initialise GLUT
     
-    
-    //Create the window
-    glutCreateWindow("Hello World");
-    
-    //Call init (initialise GLUT
-    init();
-    
-    //Call "display" function
-    glutDisplayFunc(display);
-
-    glutKeyboardFunc(&callback);
-    
-    //Enter the GLUT event loop
+    //callbaks
+    glutDisplayFunc(&display);
+    glutMouseFunc(&mouse);
+    glutKeyboardFunc(&keyboard);
+    glutSpecialFunc(&specialKeys);
+    //loop
     glutMainLoop();
 
     return 0;
