@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rolf/dev/some-game-opengl/CMakeFiles /home/rolf/dev/some-game-opengl/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/rolf/dev/some-game-opengl && $(CMAKE_COMMAND) -E cmake_progress_start /home/rolf/dev/some-game-opengl/CMakeFiles /home/rolf/dev/some-game-opengl/src/CMakeFiles/progress.marks
+	cd /home/rolf/dev/some-game-opengl && $(MAKE) -f CMakeFiles/Makefile2 src/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rolf/dev/some-game-opengl/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/rolf/dev/some-game-opengl && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,112 +97,18 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/rolf/dev/some-game-opengl && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/rolf/dev/some-game-opengl && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rolf/dev/some-game-opengl && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named SomeGame
-
-# Build rule for target.
-SomeGame: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SomeGame
-.PHONY : SomeGame
-
-# fast build rule for target.
-SomeGame/fast:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/build
-.PHONY : SomeGame/fast
-
-src/Config.o: src/Config.cc.o
-
-.PHONY : src/Config.o
-
-# target to build an object file
-src/Config.cc.o:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/Config.cc.o
-.PHONY : src/Config.cc.o
-
-src/Config.i: src/Config.cc.i
-
-.PHONY : src/Config.i
-
-# target to preprocess a source file
-src/Config.cc.i:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/Config.cc.i
-.PHONY : src/Config.cc.i
-
-src/Config.s: src/Config.cc.s
-
-.PHONY : src/Config.s
-
-# target to generate assembly for a file
-src/Config.cc.s:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/Config.cc.s
-.PHONY : src/Config.cc.s
-
-src/Game.o: src/Game.cc.o
-
-.PHONY : src/Game.o
-
-# target to build an object file
-src/Game.cc.o:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/Game.cc.o
-.PHONY : src/Game.cc.o
-
-src/Game.i: src/Game.cc.i
-
-.PHONY : src/Game.i
-
-# target to preprocess a source file
-src/Game.cc.i:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/Game.cc.i
-.PHONY : src/Game.cc.i
-
-src/Game.s: src/Game.cc.s
-
-.PHONY : src/Game.s
-
-# target to generate assembly for a file
-src/Game.cc.s:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/Game.cc.s
-.PHONY : src/Game.cc.s
-
-src/main.o: src/main.cc.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cc.o:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/main.cc.o
-.PHONY : src/main.cc.o
-
-src/main.i: src/main.cc.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cc.i:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/main.cc.i
-.PHONY : src/main.cc.i
-
-src/main.s: src/main.cc.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cc.s:
-	$(MAKE) -f CMakeFiles/SomeGame.dir/build.make CMakeFiles/SomeGame.dir/src/main.cc.s
-.PHONY : src/main.cc.s
 
 # Help Target
 help:
@@ -211,17 +117,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... SomeGame"
 	@echo "... edit_cache"
-	@echo "... src/Config.o"
-	@echo "... src/Config.i"
-	@echo "... src/Config.s"
-	@echo "... src/Game.o"
-	@echo "... src/Game.i"
-	@echo "... src/Game.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 .PHONY : help
 
 
@@ -233,6 +129,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rolf/dev/some-game-opengl && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
