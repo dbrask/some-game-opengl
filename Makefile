@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rolf/dev/hello_universe
+CMAKE_SOURCE_DIR = /home/rolf/dev/some-game-opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rolf/dev/hello_universe
+CMAKE_BINARY_DIR = /home/rolf/dev/some-game-opengl
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rolf/dev/hello_universe/CMakeFiles /home/rolf/dev/hello_universe/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rolf/dev/some-game-opengl/CMakeFiles /home/rolf/dev/some-game-opengl/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rolf/dev/hello_universe/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rolf/dev/some-game-opengl/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Hello_Universe
+# Target rules for targets named some-game
 
 # Build rule for target.
-Hello_Universe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Hello_Universe
-.PHONY : Hello_Universe
+some-game: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 some-game
+.PHONY : some-game
 
 # fast build rule for target.
-Hello_Universe/fast:
-	$(MAKE) -f CMakeFiles/Hello_Universe.dir/build.make CMakeFiles/Hello_Universe.dir/build
-.PHONY : Hello_Universe/fast
+some-game/fast:
+	$(MAKE) -f CMakeFiles/some-game.dir/build.make CMakeFiles/some-game.dir/build
+.PHONY : some-game/fast
 
 Game.o: Game.cc.o
 
@@ -129,7 +129,7 @@ Game.o: Game.cc.o
 
 # target to build an object file
 Game.cc.o:
-	$(MAKE) -f CMakeFiles/Hello_Universe.dir/build.make CMakeFiles/Hello_Universe.dir/Game.cc.o
+	$(MAKE) -f CMakeFiles/some-game.dir/build.make CMakeFiles/some-game.dir/Game.cc.o
 .PHONY : Game.cc.o
 
 Game.i: Game.cc.i
@@ -138,7 +138,7 @@ Game.i: Game.cc.i
 
 # target to preprocess a source file
 Game.cc.i:
-	$(MAKE) -f CMakeFiles/Hello_Universe.dir/build.make CMakeFiles/Hello_Universe.dir/Game.cc.i
+	$(MAKE) -f CMakeFiles/some-game.dir/build.make CMakeFiles/some-game.dir/Game.cc.i
 .PHONY : Game.cc.i
 
 Game.s: Game.cc.s
@@ -147,7 +147,7 @@ Game.s: Game.cc.s
 
 # target to generate assembly for a file
 Game.cc.s:
-	$(MAKE) -f CMakeFiles/Hello_Universe.dir/build.make CMakeFiles/Hello_Universe.dir/Game.cc.s
+	$(MAKE) -f CMakeFiles/some-game.dir/build.make CMakeFiles/some-game.dir/Game.cc.s
 .PHONY : Game.cc.s
 
 main.o: main.cc.o
@@ -156,7 +156,7 @@ main.o: main.cc.o
 
 # target to build an object file
 main.cc.o:
-	$(MAKE) -f CMakeFiles/Hello_Universe.dir/build.make CMakeFiles/Hello_Universe.dir/main.cc.o
+	$(MAKE) -f CMakeFiles/some-game.dir/build.make CMakeFiles/some-game.dir/main.cc.o
 .PHONY : main.cc.o
 
 main.i: main.cc.i
@@ -165,7 +165,7 @@ main.i: main.cc.i
 
 # target to preprocess a source file
 main.cc.i:
-	$(MAKE) -f CMakeFiles/Hello_Universe.dir/build.make CMakeFiles/Hello_Universe.dir/main.cc.i
+	$(MAKE) -f CMakeFiles/some-game.dir/build.make CMakeFiles/some-game.dir/main.cc.i
 .PHONY : main.cc.i
 
 main.s: main.cc.s
@@ -174,7 +174,7 @@ main.s: main.cc.s
 
 # target to generate assembly for a file
 main.cc.s:
-	$(MAKE) -f CMakeFiles/Hello_Universe.dir/build.make CMakeFiles/Hello_Universe.dir/main.cc.s
+	$(MAKE) -f CMakeFiles/some-game.dir/build.make CMakeFiles/some-game.dir/main.cc.s
 .PHONY : main.cc.s
 
 # Help Target
@@ -184,7 +184,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... Hello_Universe"
+	@echo "... some-game"
 	@echo "... edit_cache"
 	@echo "... Game.o"
 	@echo "... Game.i"

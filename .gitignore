@@ -37,3 +37,4 @@ boost_*/
 mesa-*/
 *.cmake
 CMakeCache.txt
+some-game
