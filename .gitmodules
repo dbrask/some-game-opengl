@@ -1,3 +1,6 @@
 [submodule "boost"]
 	path = boost
 	url = git@github.com:boostorg/boost.git
+[submodule "glfw"]
+	path = glfw
+	url = git@github.com:glfw/glfw.git
